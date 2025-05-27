@@ -1,3 +1,4 @@
+'use client'
 import Pokemon from '@/model/pokemon';
 import React, { useEffect, useState } from 'react';
 import { Container, Image, Spinner, Row } from 'react-bootstrap';
