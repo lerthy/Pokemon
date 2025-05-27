@@ -20,8 +20,8 @@ export default function PokemonPage({ params }: Params) {
   useEffect(() => {
     async function fetchAllPokemon() {
         let url = "/api/pokemon";
-        let allItems: any[] = [];
-        let seenPages = new Set();
+        let allItems: Pokemon[] = [];
+        const seenPages = new Set();
 
         while (url && allItems.length < 200) { // Increase limit if needed
             const resp = await fetch(url);
@@ -41,7 +41,7 @@ export default function PokemonPage({ params }: Params) {
 
     async function fetchPokemon() {
         const allPokemon = await fetchAllPokemon();
-        const found = allPokemon.find((p: any) => String(p.pokemonNumber) === String(pokemon_id));
+        const found = allPokemon.find((p: Pokemon) => String(p.pokemonNumber) === String(pokemon_id));
         setPokemon(found);
         setPokemonLoaded(true);
     }
@@ -60,7 +60,9 @@ export default function PokemonPage({ params }: Params) {
                    pokemon ?
                        <PokemonComponent pokemon={pokemon}></PokemonComponent> :
                        <Image className='img-fluid mx-auto d-block rounded'
-                           src="https://cdn.dribbble.com/users/2805817/screenshots/13206178/media/6bd36939f8a01d4480cb1e08147e20f3.png" /> :
+                           src="https://cdn.dribbble.com/users/2805817/screenshots/13206178/media/6bd36939f8a01d4480cb1e08147e20f3.png"
+                           alt="Not found"
+                       /> :
                    <Container>
                        <Row className="justify-content-md-center p-2">
                            <Spinner className='p-2' animation='border' role='status' />
