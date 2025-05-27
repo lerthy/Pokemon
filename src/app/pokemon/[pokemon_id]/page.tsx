@@ -20,7 +20,8 @@ import PokeNavBar from '@/components/pokeNavBarComp';
 
 // In our case http://localhost:3000/pokemon/2 is the URL.
 // Where the 2 is the [pokemon_id] and passed as a parameter.
-export default function PokemonPage({ params }: { params: { pokemon_id: string } }) {
+export default function PokemonPage(props: any) {
+  const { params } = props;
   const { pokemon_id } = params;
    //pokemon - A constant state variable which stores the pokemon information and retains the data between renders.
    //setPokemon - A state setter function to update the variable and trigger React to render the component again.
