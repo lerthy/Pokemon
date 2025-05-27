@@ -7,9 +7,9 @@ import PokeNavBar from '@/components/pokeNavBarComp';
 
 
 // This type is used to get the pokemon id from the url path
-type PageProps = {
-  params: { pokemon_id: string }
-}
+// type PageProps = {
+//   params: { pokemon_id: string }
+// }
 
 
 
@@ -20,7 +20,7 @@ type PageProps = {
 
 // In our case http://localhost:3000/pokemon/2 is the URL.
 // Where the 2 is the [pokemon_id] and passed as a parameter.
-export default function PokemonPage({ params }: PageProps) {
+export default function PokemonPage({ params }: { params: { pokemon_id: string } }) {
   const { pokemon_id } = params;
    //pokemon - A constant state variable which stores the pokemon information and retains the data between renders.
    //setPokemon - A state setter function to update the variable and trigger React to render the component again.
