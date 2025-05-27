@@ -18,21 +18,38 @@ export default function PokemonPage({ params }: Params) {
 
 
   useEffect(() => {
-      const fetchData = async () => {
-          const resp = await fetch('/pokemons.json');
-          const pokemons: Map<string, Pokemon> = new Map(Object.entries(await resp.json()));
-          const currentPokemon = pokemons.get(pokemon_id);
-          setPokemon(currentPokemon);
-          console.log(currentPokemon);
-          setPokemonLoaded(true);
-      };
+    async function fetchAllPokemon() {
+        let url = "/api/pokemon";
+        let allItems: any[] = [];
+        let seenPages = new Set();
 
+        while (url && allItems.length < 200) { // Increase limit if needed
+            const resp = await fetch(url);
+            const data = await resp.json();
+            allItems = allItems.concat(data.items);
 
-      fetchData()
-          .catch(error => {
-              console.error(error);
-          });
-  }, []);
+            if (data.nextPage) {
+                if (seenPages.has(data.nextPage)) break;
+                seenPages.add(data.nextPage);
+                url = `/api/pokemon?page=${encodeURIComponent(data.nextPage)}`;
+            } else {
+                url = "";
+            }
+        }
+        return allItems;
+    }
+
+    async function fetchPokemon() {
+        const allPokemon = await fetchAllPokemon();
+        const found = allPokemon.find((p: any) => String(p.pokemonNumber) === String(pokemon_id));
+        setPokemon(found);
+        setPokemonLoaded(true);
+    }
+    fetchPokemon().catch(error => {
+        console.error(error);
+        setPokemonLoaded(true);
+    });
+  }, [pokemon_id]);
 
 
   return (
