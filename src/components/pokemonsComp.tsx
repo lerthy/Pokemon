@@ -16,14 +16,16 @@ interface PokemonsCompProps {
 
 export default function PokemonsComp(props: PokemonsCompProps) {
    return (
-       <Container className="pt-4 pb-4">
-           <Row xs={1} md={3} lg={5} className="g-4">
-               {props.pokemons.map((pokemon) => (
-                   <Col key={pokemon.pokemonNumber}>
-                       <PokemonCardComp pokemon={pokemon}/>
-                   </Col>
-               ))}
-           </Row>
-       </Container>
+       <div className="main-pokemon-bg" style={{ minHeight: '100vh', width: '100%', padding: '0', margin: '0' }}>
+           <Container className="pt-5 pb-5">
+               <Row xs={1} md={3} lg={5} className="g-4 justify-content-center">
+                   {props.pokemons.map((pokemon) => (
+                       <Col key={pokemon.pokemonNumber} className="d-flex align-items-stretch">
+                           <PokemonCardComp pokemon={pokemon}/>
+                       </Col>
+                   ))}
+               </Row>
+           </Container>
+       </div>
    );
 }

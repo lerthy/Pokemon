@@ -19,19 +19,33 @@ export default function PokemonComponent(props: Props) {
     <Container className="py-4">
       <Row className="justify-content-md-center mb-4">
         <Col md="auto">
-          <h1 style={{ fontWeight: 700 }}>{pokemon.pokemonName}</h1>
+          <h1 style={{ fontWeight: 800, fontSize: '2.8rem', color: '#2a75bb', letterSpacing: 1 }} className="pokemon-title fade-in">
+            {pokemon.pokemonName}
+          </h1>
         </Col>
       </Row>
       <Row>
-        <Col md={5}>
-          <Card className="shadow-sm">
-            <Card.Img variant="top" src={pokemon.mainImage} style={{ background: "#f8f9fa" }} alt={pokemon.pokemonName} />
-          </Card>
+        <Col xs={12} md={5} className="d-flex align-items-center justify-content-center mb-4 mb-md-0">
+          <img
+            src={pokemon.mainImage}
+            alt={pokemon.pokemonName}
+            className="pokemon-main-img fade-in-image"
+            style={{
+              background: '#f8f9fa',
+              borderRadius: '2rem',
+              maxWidth: '100%',
+              maxHeight: '70vh',
+              width: '100%',
+              height: 'auto',
+              boxShadow: '0 4px 24px rgba(42,117,187,0.10)',
+              objectFit: 'contain',
+            }}
+          />
         </Col>
-        <Col md={7}>
-          <Card className="shadow-sm mb-3">
+        <Col xs={12} md={7}>
+          <Card className="shadow-sm mb-3 border-0 fade-in minimal-section" style={{ borderRadius: '1.5rem', background: '#fff' }}>
             <Card.Body>
-              <Card.Title as="h5" className="mb-3">Stats</Card.Title>
+              <Card.Title as="h5" className="mb-3" style={{ color: '#ffb300', fontWeight: 700 }}>Stats</Card.Title>
               {[
                 { label: "Speed", value: pokemon.speed, color: statColors.speed },
                 { label: "Health points", value: pokemon.healthPoints, color: statColors.healthPoints },
@@ -43,47 +57,31 @@ export default function PokemonComponent(props: Props) {
                     <span><b>{stat.label}:</b></span>
                     <span>{stat.value}</span>
                   </div>
-                  <div style={{ position: "relative" }}>
-                    <div style={{
-                      width: `${stat.value}%`,
-                      background: stat.color,
-                      height: 10,
-                      borderRadius: 8,
-                      position: "absolute",
-                      left: 0,
-                      top: 0,
-                      zIndex: 1,
-                    }} />
-                    <ProgressBar
-                      now={Number(stat.value)}
-                      max={100}
-                      style={{ height: 10, background: "#e9ecef", position: "relative", zIndex: 0 }}
-                      variant="custom"
-                      className="mb-1"
-                    />
+                  <div style={{ background: '#f0f0f0', borderRadius: 6, height: 8, width: '100%' }}>
+                    <div style={{ width: `${stat.value}%`, background: stat.color, height: 8, borderRadius: 6 }} />
                   </div>
                 </div>
               ))}
             </Card.Body>
           </Card>
-          <Card className="shadow-sm mb-3">
+          <Card className="shadow-sm mb-3 border-0 fade-in minimal-section" style={{ borderRadius: '1.5rem', background: '#fff' }}>
             <Card.Body>
-              <Card.Title as="h5" className="mb-2">Pokemon type</Card.Title>
+              <Card.Title as="h5" className="mb-2" style={{ color: '#00cfff', fontWeight: 700 }}>Pokémon Type</Card.Title>
               {pokemon.pokemonType?.map(type => (
-                <Badge key={type} bg="info" className="me-2">{type}</Badge>
+                <span key={type} className={`minimal-type-badge minimal-type-badge-${type.toLowerCase()} me-2`}>{type}</span>
               )) || <span>Unknown</span>}
             </Card.Body>
           </Card>
-          <Card className="shadow-sm">
+          <Card className="shadow-sm border-0 fade-in minimal-section" style={{ borderRadius: '1.5rem', background: '#fff' }}>
             <Card.Body>
-              <Card.Title as="h5" className="mb-2">Evaluation family</Card.Title>
+              <Card.Title as="h5" className="mb-2" style={{ color: '#4caf50', fontWeight: 700 }}>Evolution Family</Card.Title>
               <div>
                 {pokemon.devolution && (
-                  <Badge bg="danger" className="me-2">{pokemon.devolution} Devolution</Badge>
+                  <span className="minimal-evo-badge minimal-evo-badge-devolution me-2">{pokemon.devolution} Devolution</span>
                 )}
-                <Badge bg="primary" className="me-2">{pokemon.pokemonName} Current</Badge>
+                <span className="minimal-evo-badge minimal-evo-badge-current me-2">{pokemon.pokemonName} Current</span>
                 {pokemon.evolution && (
-                  <Badge bg="success">{pokemon.evolution} Evolution</Badge>
+                  <span className="minimal-evo-badge minimal-evo-badge-evolution">{pokemon.evolution} Evolution</span>
                 )}
               </div>
             </Card.Body>

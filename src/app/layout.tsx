@@ -1,6 +1,8 @@
+import './globals.css';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PokeNavBarComp from '@/components/pokeNavBarComp';
 
 
 const geistSans = Geist({
@@ -26,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <PokeNavBarComp />
         {children}
       </body>
     </html>
