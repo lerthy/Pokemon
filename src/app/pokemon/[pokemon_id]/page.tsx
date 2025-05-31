@@ -6,12 +6,7 @@ import PokemonComponent from './pokemon';
 import './pokemonPage.css';
 
 
-type Params = {
-  params: { pokemon_id: string }
-}
-
-
-export default function PokemonPage({ params }: Params) {
+export default function PokemonPage({ params }: { params: { pokemon_id: string } }) {
   const { pokemon_id } = params;
   const [pokemon, setPokemon] = useState<Pokemon>();
   const [isPokemonLoaded, setPokemonLoaded] = useState(false);

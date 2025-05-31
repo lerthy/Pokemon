@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokédex UI Workshop
+
+This is a modern, visually appealing Pokédex web app built with [Next.js](https://nextjs.org) and React. It allows you to browse, search, and view details for all Pokémon, with a beautiful and responsive design.
+
+## Features
+- Browse all Pokémon with images, types, and stats
+- Search by name, number, or type
+- Detailed Pokémon pages with large images and evolution info
+- Custom Pokémon: **LerdiMon** (created by the author)
+- Minimal, modern UI with smooth animations
 
 ## Getting Started
 
@@ -19,6 +28,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Custom Pokémon: LerdiMon
+
+This Pokédex features a unique, custom Pokémon called **LerdiMon**. Try searching for it in the app!
 
 ## Learn More
 
