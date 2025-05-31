@@ -24,7 +24,7 @@ export default function AboutPage() {
           <Card className="shadow-lg border-0">
             <Card.Body>
               <Card.Text style={{ fontSize: "1.2rem" }}>
-                This website is your ultimate Pokédex companion! Browse, search, and discover detailed information about your favorite Pokémon. Whether you're a seasoned trainer or just starting your journey, our Pokédex provides images, stats, and fun facts for every Pokémon. Dive in and explore the world of Pokémon!
+                This website is your ultimate Pokédex companion! Browse, search, and discover detailed information about your favorite Pokémon. Whether you&apos;re a seasoned trainer or just starting your journey, our Pokédex provides images, stats, and fun facts for every Pokémon. Dive in and explore the world of Pokémon!
               </Card.Text>
             </Card.Body>
           </Card>

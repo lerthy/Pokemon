@@ -1,7 +1,7 @@
 'use client'
 import Pokemon from '@/model/pokemon';
 import { useEffect, useState } from 'react';
-import { Container, Image, Spinner, Row, Card } from 'react-bootstrap';
+import { Container, Image, Spinner, Row } from 'react-bootstrap';
 import PokemonComponent from './pokemon';
 import './pokemonPage.css';
 import { useParams } from 'next/navigation';
@@ -17,7 +17,7 @@ export default function PokemonPage() {
       const resp = await fetch("/pokemons.json");
       const data = await resp.json();
       // pokemon_id may be string or number, so ensure string comparison
-      const found = data.find((p: any) => String(p.pokemonNumber) === String(pokemon_id));
+      const found = data.find((p: Pokemon) => String(p.pokemonNumber) === String(pokemon_id));
       setPokemon(found);
       setPokemonLoaded(true);
     }

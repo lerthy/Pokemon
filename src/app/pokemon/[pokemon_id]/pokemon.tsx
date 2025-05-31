@@ -1,5 +1,5 @@
 import Pokemon from "@/model/pokemon";
-import { Row, Col, Container, Card, ProgressBar, Badge } from 'react-bootstrap';
+import { Row, Col, Container, Card } from 'react-bootstrap';
 
 type Props = {
   pokemon: Pokemon;
