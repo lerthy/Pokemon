@@ -1,16 +1,16 @@
 'use client'
 import Pokemon from '@/model/pokemon';
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Image, Spinner, Row, Card } from 'react-bootstrap';
 import PokemonComponent from './pokemon';
 import './pokemonPage.css';
+import { useParams } from 'next/navigation';
 
-
-export default function PokemonPage({ params }: { params: { pokemon_id: string } }) {
-  const { pokemon_id } = params;
+export default function PokemonPage() {
+  const params = useParams();
+  const pokemon_id = params.pokemon_id as string;
   const [pokemon, setPokemon] = useState<Pokemon>();
   const [isPokemonLoaded, setPokemonLoaded] = useState(false);
-
 
   useEffect(() => {
     async function fetchPokemonFromJson() {
@@ -26,7 +26,6 @@ export default function PokemonPage({ params }: { params: { pokemon_id: string }
       setPokemonLoaded(true);
     });
   }, [pokemon_id]);
-
 
   return (
     <div
